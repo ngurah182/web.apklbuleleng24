@@ -1,0 +1,45 @@
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <div class="header">
+            <h2 class="mb-4 text-center">Data Kebutuhan Guru dan Tenaga Kependidikan
+            </h2>
+            <h2 class="mb-4 text-center">Jenjang Sekolah Dasar
+            </h2>
+            <div class="p-2">
+                <form method="GET" action="">
+                    <select name="page" id="page" onchange="loadData(this.value)">
+                        <option value="rekapkec">Pilih Kecamatan</option>
+                        <option value="banjar">Banjar</option>
+                        <option value="buleleng">Buleleng</option>
+                        <option value="busungbiu">Busungbiu</option>
+                        <option value="gerokgak">Gerokgak</option>
+                        <option value="kubutambahan">Kubutambahan</option>
+                        <option value="sawan">Sawan</option>
+                        <option value="seririt">Seririt</option>
+                        <option value="sukasada">Sukasada</option>
+                        <option value="tejakula">Tejakula</option>
+                    </select>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table id="dataTable" class="table table-striped table-bordered">
+                    <thead class="thead-dark text-center">
+                        <tr>
+                            <th>JENIS PTK</th>
+                            <th>KEBUTUHAN</th>
+                            <th>PNS</th>
+                            <th>PPPK</th>
+                            <th>KONTRKA DINAS</th>
+                            <th>HONOR SEKOLAH</th>
+                            <th>KEKURANGAN</th>
+                            <th>KELEBIHAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

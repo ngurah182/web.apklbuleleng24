@@ -1,0 +1,376 @@
+    <div class="content" id="mainContent">
+        <div class="p-4 sm:ml-64">
+            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+                <div class="header">
+                    <div class="text-center mb-4">
+                        <h1>Selamat Datang di Sistem Informasi APKL</h1>
+                        <h2>Pengajuan dan Pengelolaan APKL secara online.</h2>
+                    </div>
+                    <!-- <button class="btn btn-primary mb-3" id="tambahData" data-toggle="modal" data-target="#addModal"><i
+                            class="fas fa-plus"></i> Tambah Data</button> -->
+                    <div class="table-responsive">
+                        <table id="dataTable" class="table table-striped table-bordered">
+                            <thead class="thead-dark text-center">
+                                <tr>
+                                    <th>NO</th>
+                                    <th>KECAMATAN</th>
+                                    <th>NPSN</th>
+                                    <th>NAMA SEKOLAH</th>
+                                    <th>JENIS PTK</th>
+                                    <th>KEBUTUHAN</th>
+                                    <th>PNS</th>
+                                    <th>PPPK</th>
+                                    <th>KONTRKA DINAS</th>
+                                    <th>HONOR SEKOLAH</th>
+                                    <th>KEKURANGAN</th>
+                                    <th>KELEBIHAN</th>
+                                    <th>KETERANGAN</th>
+                                    <th>NAMA PENGELOLA</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Add/Edit Data Modal -->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">Tambah Data Baru</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addForm">
+                                <input type="hidden" class="form-control" id="idpeg">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="kecamatan">KECAMATAN</label>
+                                        <input type="text" class="form-control" id="kecamatan" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="npsn">NPSN</label>
+                                        <input type="number" class="form-control" id="npsn" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="namaSekolah">NAMA SEKOLAH</label>
+                                        <input type="text" class="form-control" id="namaSekolah" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="jenisPtk">JENIS PTK</label>
+                                        <input type="text" class="form-control" id="jenisPtk" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="kebutuhan">KEBUTUHAN</label>
+                                        <input type="number" class="form-control" id="kebutuhan" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="pns">PNS</label>
+                                        <input type="number" class="form-control" id="pns" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="pppk">PPPK</label>
+                                        <input type="number" class="form-control" id="pppk" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="kontrakDinas">KONTRAK DINAS</label>
+                                        <input type="number" class="form-control" id="kontrakDinas" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="honorSekolah">HONOR SEKOLAH</label>
+                                        <input type="number" class="form-control" id="honorSekolah" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="kekurangan">KEKURANGAN</label>
+                                        <input type="number" class="form-control" id="kekurangan" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="kelebihan">KELEBIHAN</label>
+                                        <input type="number" class="form-control" id="kelebihan" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="namaPengelola">NAMA PENGELOLA</label>
+                                        <input type="text" class="form-control" id="namaPengelola" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="keterangan">KETERANGAN</label>
+                                    <input type="text" class="form-control" id="keterangan" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-custom">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="bg-white rounded-lg">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"> © 2024
+                    <a target="_blank"
+                        href="https://wa.me/6281915662166?text=saya ingin memberikan masukan untuk web ini"
+                        class="hover:underline">ngurah182™</a>. All Rights Reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery, Bootstrap JS, and other scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const username = localStorage.getItem('username');
+            document.getElementById('usernameDisplay').innerText = username;
+
+            const url =
+                "https://script.google.com/macros/s/AKfycbwqtRJDLpLR3UpF3-T8bPLjL_DP73QmPdD0Dzm_WFat_ff5Hi_yYeXPr42EZD3fwBo0SQ/exec";
+
+            const table = $("#dataTable").DataTable({
+                ajax: {
+                    url: `${url}?action=filter-by-sekolah&namaSekolah=${encodeURIComponent(username)}`,
+                    dataSrc: "data"
+                },
+                columns: [{
+                        title: "ID",
+                        data: "id"
+                    },
+                    {
+                        title: "KECAMATAN",
+                        data: "kecamatan"
+                    },
+                    {
+                        title: "NPSN",
+                        data: "npsn"
+                    },
+                    {
+                        title: "NAMA SEKOLAH",
+                        data: "namaSekolah"
+                    },
+                    {
+                        title: "JENIS PTK",
+                        data: "jenisPtk"
+                    },
+                    {
+                        title: "KEBUTUHAN",
+                        data: "kebutuhan"
+                    },
+                    {
+                        title: "PNS",
+                        data: "pns"
+                    },
+                    {
+                        title: "PPPK",
+                        data: "pppk"
+                    },
+                    {
+                        title: "KONTRAK DINAS",
+                        data: "kontrakDinas"
+                    },
+                    {
+                        title: "HONOR SEKOLAH",
+                        data: "honorSekolah"
+                    },
+                    {
+                        title: "KEKURANGAN",
+                        data: "kekurangan"
+                    },
+                    {
+                        title: "KELEBIHAN",
+                        data: "kelebihan"
+                    },
+                    {
+                        title: "KETERANGAN",
+                        data: "keterangan"
+                    },
+                    {
+                        title: "NAMA PENGELOLA",
+                        data: "namaPengelola"
+                    },
+                    {
+                        title: "AKSI",
+                        className: "center",
+                        sortable: false,
+                        render: function (data, type, row, meta) {
+                            return `<div class="btn-group">
+                                <div class="edit-btn">
+                                    <button class="btn btn-warning btn-sm edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                                </div>
+                                <div class="delete-btn">
+                                    <button class="btn btn-danger btn-sm delete-btn"><i class="fas fa-trash-alt"></i> Hapus</button>
+                                </div>
+                            </div>`;
+                        }
+                    }
+                ],
+                rowId: "id",
+                responsive: true
+            });
+
+
+            $('#tambahData').on('click', function () {
+                clearForm();
+                $('#addModal').modal('show');
+                $('#addModal .modal-title').text('Tambah Data Baru');
+            });
+
+            $('#dataTable tbody').on('click', 'button.edit-btn', function () {
+                const data = table.row($(this).parents('tr')).data();
+                populateForm(data);
+                $('#addModal').modal('show');
+                $('#addModal .modal-title').text('Edit Data Pegawai');
+            });
+
+            $('#dataTable tbody').on('click', 'button.delete-btn', function () {
+    const data = table.row($(this).parents('tr')).data();
+    const id = data.id;
+
+    Swal.fire({
+        title: 'Anda yakin?',
+        text: "Anda tidak akan dapat mengembalikan data ini!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, hapus!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.getJSON(url + "?action=delete&id=" + id, function (result) {
+                Swal.fire(
+                    'Deleted!',
+                    result.message,
+                    'success'
+                );
+                table.ajax.reload();
+            });
+        }
+    });
+});
+
+$('#addForm').on('submit', function (event) {
+    event.preventDefault();
+
+    const idpeg = $('#idpeg').val();
+    const kecamatan = $('#kecamatan').val();
+    const npsn = $('#npsn').val();
+    const namaSekolah = $('#namaSekolah').val();
+    const jenisPtk = $('#jenisPtk').val();
+    const kebutuhan = $('#kebutuhan').val();
+    const pns = $('#pns').val();
+    const pppk = $('#pppk').val();
+    const kontrakDinas = $('#kontrakDinas').val();
+    const honorSekolah = $('#honorSekolah').val();
+    const kekurangan = $('#kekurangan').val();
+    const kelebihan = $('#kelebihan').val();
+    const keterangan = $('#keterangan').val();
+    const namaPengelola = $('#namaPengelola').val();
+
+    if (isFormValid()) {
+        let apiURL = '';
+
+        if (idpeg) {
+            apiURL = `${url}?action=update&id=${idpeg}&kecamatan=${kecamatan}&npsn=${npsn}&namaSekolah=${namaSekolah}&jenisPtk=${jenisPtk}&kebutuhan=${kebutuhan}&pns=${pns}&pppk=${pppk}&kontrakDinas=${kontrakDinas}&honorSekolah=${honorSekolah}&kekurangan=${kekurangan}&kelebihan=${kelebihan}&keterangan=${keterangan}&namaPengelola=${namaPengelola}`;
+        } else {
+            apiURL = `${url}?action=tambah&kecamatan=${kecamatan}&npsn=${npsn}&namaSekolah=${namaSekolah}&jenisPtk=${jenisPtk}&kebutuhan=${kebutuhan}&pns=${pns}&pppk=${pppk}&kontrakDinas=${kontrakDinas}&honorSekolah=${honorSekolah}&kekurangan=${kekurangan}&kelebihan=${kelebihan}&keterangan=${keterangan}&namaPengelola=${namaPengelola}`;
+        }
+
+        $.getJSON(apiURL, function (result) {
+            $('#addModal').modal('hide');
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: result.message
+            });
+            table.ajax.reload();
+        }).fail(function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Terjadi kesalahan saat menyimpan data'
+            });
+        });
+    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Incomplete Form',
+            text: 'Harap lengkapi data'
+        });
+    }
+});
+
+            function clearForm() {
+                $('#addForm')[0].reset();
+                $('#idpeg').val('');
+            }
+
+            function populateForm(data) {
+                $('#idpeg').val(data.id);
+                $('#kecamatan').val(data.kecamatan);
+                $('#npsn').val(data.npsn);
+                $('#namaSekolah').val(data.namaSekolah);
+                $('#jenisPtk').val(data.jenisPtk);
+                $('#kebutuhan').val(data.kebutuhan);
+                $('#pns').val(data.pns);
+                $('#pppk').val(data.pppk);
+                $('#kontrakDinas').val(data.kontrakDinas);
+                $('#honorSekolah').val(data.honorSekolah);
+                $('#kekurangan').val(data.kekurangan);
+                $('#kelebihan').val(data.kelebihan);
+                $('#keterangan').val(data.keterangan);
+                $('#namaPengelola').val(data.namaPengelola);
+
+            }
+
+            function isFormValid() {
+                return $('#kecamatan').val() !== '' &&
+                    $('#npsn').val() !== '' &&
+                    $('#namaSekolah').val() !== '' &&
+                    $('#jenisPtk').val() !== '' &&
+                    $('#kebutuhan').val() !== '' &&
+                    $('#pns').val() !== '' &&
+                    $('#pppk').val() !== '' &&
+                    $('#kontrakDinas').val() !== '' &&
+                    $('#honorSekolah').val() !== '' &&
+                    $('#kekurangan').val() !== '' &&
+                    $('#kelebihan').val() !== '' &&
+                    $('#keterangan').val() !== '' &&
+                    $('#namaPengelola').val() !== '';
+
+            }
+        });
+    </script>
+ 

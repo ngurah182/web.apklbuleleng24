@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <title>Login e-APKL</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .login-container .input-field {
+            background: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            width: 100%;
+            font-size: 0.875rem;
+        }
+
+        .login-container .btn-primary {
+            background: #fe2c55;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            color: white;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .login-container .btn-primary:hover {
+            background: #d82245;
+        }
+
+        .login-container .forgot-password {
+            color: #fe2c55;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .login-container .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .text-primary {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .text-primary:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>
+            <img src="https://disdikpora.bulelengkab.go.id/assets/image/logo_buleleng_600.png" class="h-10 me-2"
+                alt="FlowBite Logo" />
+            <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">LOGIN
+                e-APKL</span>
+        </h2>
+        <form onsubmit="validateForm(event)" id="loginForm">
+            <div class="mb-5">
+                <input type="text" id="username" class="input-field" placeholder="Username" required />
+            </div>
+            <div class="mb-5">
+                <input type="password" id="password" class="input-field" placeholder="Password" required />
+            </div>
+            <div id="error-message" class="error-message mb-5"></div>
+            <button type="submit" class="btn-primary">Submit</button>
+        </form>
+        <div class="text-center mt-4">
+            <span>Belum punya akun?</span> <a href="daftar.html" class="text-primary">Daftar</a>
+        </div>
+        <div class="text-center mt-4">
+            <span>Tutorial:</span> <a target="_blank" href="https://youtu.be/pYduXw38oUY" class="text-primary">Link Youtube</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            fetch(
+                'https://script.google.com/macros/s/AKfycbziWIPBhxL8ZR-HngNx7kn5q3a3BvPs__tNxk0mXAof8oOKq5vD43UwYnK91m4ZUs4GLg/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        action: 'login',
+                        username: username,
+                        password: password
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Debugging log
+                        console.log("Login successful.");
+                        console.log("Username:", username);
+                        
+                        // Cek username dan redirect sesuai
+                        if (username === 'admin') {
+                            console.log("Redirecting to admin.php");
+                            // Simpan username ke localStorage
+                            localStorage.setItem('username', username);
+                            window.location.href = 'admin.php';
+                        } else {
+                            console.log("Redirecting to main.php");
+                            // Simpan username ke localStorage
+                            localStorage.setItem('username', username);
+                            window.location.href = 'main.php';
+                        }
+                    } else {
+                        console.log("Login failed:", data.message);
+                        // Menampilkan SweetAlert untuk login gagal
+                        swal({
+                            title: "Login Failed",
+                            text: data.message,
+                            icon: "error",
+                            button: "OK",
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    swal("Error", "An error occurred while processing your request.",
+                    "error"); // Menampilkan SweetAlert untuk error
+                });
+        }
+    </script>
+    
+    
+</body>
+</html>
